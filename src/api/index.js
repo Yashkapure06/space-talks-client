@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://spacetalks.herokuapp.com' });
+const API = axios.create({ baseURL: 'https://space-talks-yashkapure06.koyeb.app/' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
