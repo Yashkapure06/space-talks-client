@@ -10,6 +10,10 @@ import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
+import * as dotenv from 'dotenv'
+dotenv.config()
+
+const googleAuthkey = process.env.GOOGLE_AUTH;
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -65,7 +69,7 @@ const SignUp = () => {
         <Typography component="h1" variant="h5">{ isSignup ? 'Sign up' : 'Sign in' }</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <GoogleLogin
-            clientId="408411571083-n2pl3kkn331o0h3tv7glhalmivk85mjv.apps.googleusercontent.com"
+            clientId={googleAuthkey}
             render={(renderProps) => (
               <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                 Google Sign In
