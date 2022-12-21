@@ -13,7 +13,6 @@ import Input from './Input';
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-const googleAuthkey = process.env.GOOGLE_AUTH;
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -56,6 +55,7 @@ const SignUp = () => {
     }
   };
 
+  const google_ClientId = process.env.GOOGLE_CLIENT_ID;
   const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -69,7 +69,7 @@ const SignUp = () => {
         <Typography component="h1" variant="h5">{ isSignup ? 'Sign up' : 'Sign in' }</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <GoogleLogin
-            clientId={googleAuthkey}
+            clientId={google_ClientId}
             render={(renderProps) => (
               <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                 Google Sign In
